@@ -1,5 +1,6 @@
 package com.marcossousadev.curso_spring_souzadev.handler;
 import com.marcossousadev.curso_spring_souzadev.exception.ErrorResponse;
+import com.marcossousadev.curso_spring_souzadev.exception.LimitProductException;
 import com.marcossousadev.curso_spring_souzadev.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,15 @@ public class GlobalExceptionHandler {
                  .build();
          return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
+    @ExceptionHandler(LimitProductException.class)
+    public ResponseEntity<ErrorResponse> handlerLimitProductException(Exception ex) {
+        ErrorResponse reponse = ErrorResponse.builder()
+                .message(ex.getMessage())
+                .status(HttpStatus.UNPROCESSABLE_CONTENT.value())
+                .build();
 
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT).body(reponse);
+    }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handlerServerErrorException(Exception ex) {
         ErrorResponse response = ErrorResponse.builder()

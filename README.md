@@ -21,6 +21,7 @@ Durante esta primeira parte, foram praticados conceitos como:
 * Retorno de informações através da API
 * Tratamento de erros
 * Comunicação entre cliente e servidor
+* Swagger para documentar nossa API REST
 
 ## 🛠️ Tecnologias utilizadas
 

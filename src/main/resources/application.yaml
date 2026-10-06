@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: curso-spring-souzadev
+server:
+  port: 8082
